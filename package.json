@@ -1,0 +1,27 @@
+{
+  "name": "set-up-jenkins-pipeline-for-ci-cd",
+  "version": "1.0.0",
+  "description": "Node.js app for Jenkins CI/CD Pipeline",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest --coverage --forceExit",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anugrah2808/Set-Up-Jenkins-Pipeline-for-CI-CD.git"
+  },
+  "keywords": ["jenkins", "ci-cd", "nodejs"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anugrah2808/Set-Up-Jenkins-Pipeline-for-CI-CD/issues"
+  },
+  "homepage": "https://github.com/Anugrah2808/Set-Up-Jenkins-Pipeline-for-CI-CD#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1",
+    "eslint": "^8.56.0"
+  }
+}
