@@ -13,8 +13,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm test'
-                sh "docker run ${env.DOCKER_IMAGE}:${env.BUILD_ID} npm test"
+                script {
+                    // Run tests *inside* the container where devDependencies are available
+                    docker.image("${env.DOCKER_IMAGE}:${env.BUILD_ID}").inside {
+                        sh 'npm install'
+                        sh 'npm test'
+                    }
+                }
             }
         }
         stage('Deploy') {
@@ -30,7 +35,7 @@ pipeline {
     }
     post {
         always {
-            sh "docker rmi ${env.DOCKER_IMAGE}:${env.BUILD_ID}"
+            sh "docker rmi ${env.DOCKER_IMAGE}:${env.BUILD_ID} || true"
         }
     }
 }
