@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = "your-dockerhub-username/nodejs-jenkins-demo"
+        DOCKER_IMAGE = "anugrah28/nodejs-jenkins-demo"
     }
     stages {
         stage('Build') {
