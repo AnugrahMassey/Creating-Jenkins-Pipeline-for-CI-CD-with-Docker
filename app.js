@@ -1,18 +1,22 @@
-const http = require('http');
-const PORT = process.env.PORT || 3000;
+const request = require('supertest');
+const server = require('../app');
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/health') {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    return res.end(JSON.stringify({ status: 'OK' }));
-  }
-  
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end("Hello from Jenkins CI/CD Pipeline!");
+afterAll((done) => {
+  server.close(done); // Ensure the server closes after tests
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+describe('GET /', () => {
+  it('should return welcome message', async () => {
+    const res = await request(server).get('/');
+    expect(res.status).toBe(200);
+    expect(res.text).toContain('Hello from Jenkins CI/CD Pipeline');
+  });
 });
 
-module.exports = server; // For testing
+describe('GET /health', () => {
+  it('should return health status', async () => {
+    const res = await request(server).get('/health');
+    expect(res.status).toBe(200);
+    expect(res.body.status).toBe('OK');
+  });
+});
