@@ -1,4 +1,4 @@
-# Creating-Jenkins-Pipeline-for-CI-CD-with-Docker
+# DevOps Internship - Task 2: Creating-Jenkins-Pipeline-for-CI-CD-with-Docker
 
 This repository demonstrates a simple Jenkins pipeline to automate building, testing, and deploying a Dockerized application. The pipeline triggers on every code commit to GitHub.
 
